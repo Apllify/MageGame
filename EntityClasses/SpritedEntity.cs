@@ -14,10 +14,11 @@ namespace UntitledMagusProject.EntityClasses
 		protected float x;
 		protected float y;
 
-		protected Object sprite; //change me when the type of sprite is found pls
+		protected Texture2D sprite;
 		protected String spriteAnchor;
+		//spriteAnchor can have values : "C", "NW", "NE" (for now)
 
-		public SpritedEntity(float startingX, float startingY, Object _sprite, String _spriteAnchor)
+		public SpritedEntity(float startingX, float startingY, Texture2D _sprite, String _spriteAnchor)
 		{
 			x = startingX;
 			y = startingY;
@@ -31,8 +32,10 @@ namespace UntitledMagusProject.EntityClasses
 			//call sprite draw here with current entity parameters
 		}
 
+
+
 		//TODO : add draw logic here
-		public static void spriteDraw(SpriteBatch spriteBatch, float x, float y, Object sprite, String spriteAnchor)
+		public static void spriteDraw(SpriteBatch spriteBatch, float x, float y, Texture2D sprite, String spriteAnchor)
 		{
 
 		}

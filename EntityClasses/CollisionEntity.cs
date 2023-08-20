@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UntitledMagusProject.EntityClasses
 {
-	internal class CollisionEntity : SpritedEntity
+	public class CollisionEntity 
 	{
 	}
 }
