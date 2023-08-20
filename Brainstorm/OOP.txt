@@ -1,0 +1,37 @@
+﻿List of entities : 
+- Steel/Weather/Gold Mages (sprited, movable, collide, player controllable)
+- Enemies (sprited, movable, collide, ai controlled)
+- City Buildings (sprited, movable, collide)
+- NPCs (sprited, movable, collide, ai controlled)
+- Background Tiles (sprited)
+- Enemy spawner ()
+- UI elements (sprited, updating sprites)
+(etc....)
+
+
+
+
+Possible OOP Hierarchy idea : 
+- Entity :: 
+-> no position, no attributes
+-> update() function
+-> draw() function
+
+- SpritedEntity (requires Entity) :: 
+-> x, y, sprite, drawAnchor (center/topleft/topright...)
+-> default spriteDraw() function : draws the sprite at specified position using draw anchor
+-> its draw() function will, by default, call spriteDraw() unless overridden
+
+
+- CollisionEntity (requires SpritedEntity)::
+-> virtual collisionRectangle() function that returns the current area for collision checking
+-> string variable called "tag" to help with identification during collisions
+-> string variable called "isSolid", when two solid entities collide, they will be uncollided before onCollision is called
+-> int variable called "collisionPriority", entity with lowest number will be pushed out of other during uncolliding
+-> virtual onCollision(otherCollider) function that's gonna be helpful
+-> all collision entities will be kept in a collision list and their onCollision()'s will be called accordingly
+
+
+Notes about OOP architecture:  
+- maybe the player entity should be accessible by everyone ? 
+to avoid passing it in as argument to so many entities
