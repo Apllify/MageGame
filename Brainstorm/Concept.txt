@@ -1,0 +1,17 @@
+﻿Current Working Name : “Untitled Magus Project”.
+
+Simulation game where you have to keep a country running
+Topdown perspective, you have three characters on the map that you can click to control. 
+
+Characters:
+Gold mage (very strong attacker but needs a stash of gold to fuel his power, has a few types of different attacks with different costs), 
+Steel mage (constructs structures to house people, can make walls to block enemies, can create two types of buildings : farms or kilns)
+Weather mage (can create rain to accelerate a field/create a new field from normal land, can make snow barriers to slow enemies)
+
+Resources: 
+Gold : gets put inside vaults to fuel the gold mage ; is gained every time a harvest is gotten, and a little bit with every enemy kill
+Steel : used to build all three building types by steel mage, is produced by kilns every now and then.
+Population fear : goes up whenever a villager is killed (overpopulation = less protection for people).
+
+
+Current Framework : MonoGame (<= 3.8.0, further versions require visual studio 2022)
