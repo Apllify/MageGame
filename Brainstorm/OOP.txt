@@ -32,6 +32,10 @@ Possible OOP Hierarchy idea :
 -> all collision entities will be kept in a collision list and their onCollision()'s will be called accordingly
 
 
+- Scene (requires Entity)::
+-> basically represents a game state like "Level1" or "Menu"
+-> needs a Name attribute
+
 Notes about OOP architecture:  
 - maybe the player entity should be accessible by everyone ? 
 to avoid passing it in as argument to so many entities
