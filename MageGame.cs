@@ -12,9 +12,7 @@ namespace UntitledMagusProject
 		private SpriteBatch _spriteBatch;
 		private RenderTarget2D _renderTarget; //used for virtual resolution
 
-		private Texture2D ballSprite;
-        private TiledMap _tiledMap;
-        private TiledMapRenderer _tiledMapRenderer;
+		private Map map = new Map(32, 32, 25, 30);
 
         public MageGame()
 		{
@@ -25,22 +23,18 @@ namespace UntitledMagusProject
 
 		protected override void Initialize()
 		{
+			_spriteBatch = new SpriteBatch(GraphicsDevice);
 			// TODO: Add your initialization logic here
-			_renderTarget = new RenderTarget2D(GraphicsDevice, GameConstants.screenWidth, GameConstants.screenHeight);
 
-			base.Initialize();
 		}
 
 		protected override void LoadContent()
 		{
-			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
-           
 
 
 
             // TODO: use this.Content to load your game content here
-            ballSprite = Content.Load<Texture2D>("Placeholders/ball");
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -49,32 +43,14 @@ namespace UntitledMagusProject
 				Exit();
 
             // TODO: Add your update logic here
-
-            base.Update(gameTime);
 		}
 
 		protected override void Draw(GameTime gameTime)
 		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
-			_renderTarget.GraphicsDevice.Clear(Color.CornflowerBlue);
+			GraphicsDevice.Clear(Color.Turquoise);
 
-			GraphicsDevice.SetRenderTarget(_renderTarget);
-
-            GraphicsDevice.Clear(Color.Black);
-
-
-
-
-
-            GraphicsDevice.SetRenderTarget(null); // Backbuffer
-
-			_spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp);
-			_spriteBatch.Draw(_renderTarget, new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height), Color.White);
-			_spriteBatch.End();
-
-
-
-			base.Draw(gameTime);
+			map.Draw(_spriteBatch);
+			
 		}
 	}
 }
