@@ -1,0 +1,49 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Content/TileMap.tsx",
+    "fileStates": {
+        "Content/TileMap.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Content/map.tmx": {
+            "scale": 0.6214583333333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 479.51726449882676,
+                "y": 479.5172644988267
+            }
+        },
+        "Content/tileset.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 0.33
+        },
+        "map.tmx": {
+            "scale": 0.6214583333333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 481.126382836071,
+                "y": 481.12638283607106
+            }
+        }
+    },
+    "last.imagePath": "C:/Users/illum/Downloads/TileSet16x16",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "Content/map.tmx",
+        "Content/TileMap.tsx"
+    ],
+    "recentFiles": [
+        "Content/map.tmx",
+        "Content/TileMap.tsx",
+        "Content/tileset.tsx",
+        "map.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.type": 0
+}
