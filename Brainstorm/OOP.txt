@@ -35,3 +35,7 @@ Possible OOP Hierarchy idea :
 Notes about OOP architecture:  
 - maybe the player entity should be accessible by everyone ? 
 to avoid passing it in as argument to so many entities
+
+
+
+

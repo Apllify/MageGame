@@ -14,5 +14,7 @@ namespace UntitledMagusProject
 		//216/32 = 6.75
 		public const int screenWidth = 384 ;
 		public const int screenHeight = 216;
+
+		public const string alj = "test";
 	}
 }
