@@ -48,8 +48,7 @@ namespace UntitledMagusProject
 
 		protected override void Draw(GameTime gameTime)
 		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
-			_renderTarget.GraphicsDevice.Clear(Color.CornflowerBlue);
+			_renderTarget.GraphicsDevice.Clear(Color.White);
 
 			GraphicsDevice.SetRenderTarget(_renderTarget);
 
