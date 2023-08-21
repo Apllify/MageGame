@@ -1,7 +1,7 @@
 ﻿Current Working Name : “Untitled Magus Project”.
 
 Simulation game where you have to keep a country running
-Topdown perspective, you have three characters on the map that you can click to control. 
+Topdown perspective, you have thrcree characters on the map that you can click to control. 
 
 Characters:
 Gold mage (very strong attacker but needs a stash of gold to fuel his power, has a few types of different attacks with different costs), 
