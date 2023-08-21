@@ -48,12 +48,15 @@ namespace UntitledMagusProject
 
 		protected override void Draw(GameTime gameTime)
 		{
-			_renderTarget.GraphicsDevice.Clear(Color.White);
-
 			GraphicsDevice.SetRenderTarget(_renderTarget);
+			GraphicsDevice.Clear(Color.White);
 
-			_spriteBatch.Begin();
-			_spriteBatch.Draw(ballSprite, new Vector2(0, 0), Color.White);
+			_spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp);
+
+			_spriteBatch.Draw(ballSprite, new Vector2(0, 0), null, Color.Black, 0, new Vector2(0, 0), new Vector2(1, 1), SpriteEffects.None, 0);
+			_spriteBatch.Draw(ballSprite, new Rectangle(0, 0, 384, 216), Color.White);
+			_spriteBatch.Draw(ballSprite, new Vector2(20, 20), null, Color.White, 0, new Vector2(0, 0), new Vector2(1, 1), SpriteEffects.None, 1);
+
 			_spriteBatch.End();
 
 			
@@ -65,6 +68,7 @@ namespace UntitledMagusProject
 			_spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp);
 			_spriteBatch.Draw(_renderTarget, new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height), Color.White);
 			_spriteBatch.End();
+
 
 
 
