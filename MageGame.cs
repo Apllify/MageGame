@@ -12,7 +12,6 @@ namespace UntitledMagusProject
 		private SpriteBatch _spriteBatch;
 		private RenderTarget2D _renderTarget; //used for virtual resolution
 
-		private Map map = new Map(32, 32, 25, 30);
 
         public MageGame()
 		{
@@ -49,7 +48,6 @@ namespace UntitledMagusProject
 		{
 			GraphicsDevice.Clear(Color.Turquoise);
 
-			map.Draw(_spriteBatch);
 			
 		}
 	}
