@@ -12,9 +12,8 @@ namespace UntitledMagusProject
 		//1920/384 = 1080/216 = 5	
 		//384/32 = 12
 		//216/32 = 6.75
-		public const int screenWidth = 384 ;
-		public const int screenHeight = 216;
+		public const int virtualWidth = 384 ;
+		public const int virtualHeight = 216;
 
-		public const string alj = "test";
 	}
 }
