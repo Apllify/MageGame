@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace UntitledMagusProject.EntityClasses
 
 		protected float layerDepth;
 
-		public SpritedEntity(float startingX, float startingY, Texture2D _sprite, String _spriteAnchor, float _layerDepth = 1)
+		public SpritedEntity(float startingX, float startingY, Texture2D _sprite, String _spriteAnchor, float _layerDepth)
 		{
 			x = startingX;
 			y = startingY;
@@ -29,8 +30,15 @@ namespace UntitledMagusProject.EntityClasses
 			sprite = _sprite;
 			spriteAnchor = _spriteAnchor;
 
+
 			layerDepth = _layerDepth;
+
 		}
+
+		public SpritedEntity(float startingX, float startingY, Texture2D _sprite, String _spriteAnchor):
+			this(startingX, startingY, _sprite, _spriteAnchor, GameConstants.activeDepth)
+		{ }
+		
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
@@ -41,11 +49,29 @@ namespace UntitledMagusProject.EntityClasses
 
 		public static void spriteDraw(SpriteBatch spriteBatch, float x, float y, Texture2D sprite, String spriteAnchor, float layerDepth)
 		{
-			//TODO : use sprite anchor to compute draw offset
-			Vector2 offset = new Vector2(0, 0);
+			//determine how to draw the sprite based on the anchor
+			Vector2 origin;
+			float spriteWidth = sprite.Width;
 
-			spriteBatch.Draw(sprite, new Vector2(x, y), null, Color.White, 0, offset, 1, SpriteEffects.None, layerDepth);
+
+			if (spriteAnchor == "C")
+			{
+				origin = new Vector2(sprite.Width/2, sprite.Height/2);
+			}
+			else if (spriteAnchor == "NE")
+			{
+				origin = new Vector2(sprite.Width, 0);
+			}
+			else
+			{
+				origin = new Vector2(0, 0);
+			}
+
+
+
+			spriteBatch.Draw(sprite, new Vector2(x, y), null, Color.White, 0, origin, 1, SpriteEffects.None, layerDepth);
 		}
+
 
 	}
 }

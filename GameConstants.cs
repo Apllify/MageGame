@@ -15,5 +15,9 @@ namespace UntitledMagusProject
 		public const int virtualWidth = 384 ;
 		public const int virtualHeight = 216;
 
+		public const float activeDepth = 0.5f;
+		public const float foregroundDepth = 0.2f;
+		public const float backgroundDepth = 1f;
+
 	}
 }
