@@ -13,41 +13,53 @@ namespace UntitledMagusProject.EntityClasses
 {
 	public class SpritedEntity : Entity
 	{
-		protected float x;
-		protected float y;
+
+		public Vector2 Position { get; set; }
 
 		protected Texture2D sprite;
-		protected String spriteAnchor;
+		protected String spriteAnchor; 
 		//spriteAnchor can have values : "C", "NW", "NE" (for now)
 
-		protected float layerDepth;
+		protected Color colorMask;
 
-		public SpritedEntity(float startingX, float startingY, Texture2D _sprite, String _spriteAnchor, float _layerDepth)
+
+		public float LayerDepth { get; protected set; }
+
+		public SpritedEntity(Vector2 startingCoords, Texture2D _sprite, String _spriteAnchor, float _layerDepth)
 		{
-			x = startingX;
-			y = startingY;
+			//properties/fields that have argument values
+			Position = startingCoords;
 
 			sprite = _sprite;
 			spriteAnchor = _spriteAnchor;
 
+			LayerDepth = _layerDepth;
 
-			layerDepth = _layerDepth;
+			//default draw color, user can change it but not from constructor
+			colorMask = Color.White;
 
+
+			//default tag for all sprited entities
+			Tag = "untagged-sprited-entity";
 		}
 
-		public SpritedEntity(float startingX, float startingY, Texture2D _sprite, String _spriteAnchor):
-			this(startingX, startingY, _sprite, _spriteAnchor, GameConstants.activeDepth)
+		public SpritedEntity(Vector2 startingCoords, Texture2D _sprite, String _spriteAnchor):
+			this(startingCoords, _sprite, _spriteAnchor, GameConstants.activeDepth)
+		{ }
+
+		public SpritedEntity(Vector2 startingCoords, Texture2D _sprite) :
+			this(startingCoords, _sprite, "C", GameConstants.activeDepth)
 		{ }
 		
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
-			SpritedEntity.spriteDraw(spriteBatch, x, y, sprite, spriteAnchor, layerDepth);
+			SpritedEntity.spriteDraw(spriteBatch, Position, sprite, spriteAnchor, LayerDepth);
 		}
 
 
 
-		public static void spriteDraw(SpriteBatch spriteBatch, float x, float y, Texture2D sprite, String spriteAnchor, float layerDepth)
+		public static void spriteDraw(SpriteBatch spriteBatch, Vector2 drawPosition, Texture2D sprite, String spriteAnchor, float layerDepth, Color colorMask)
 		{
 			//determine how to draw the sprite based on the anchor
 			Vector2 origin;
@@ -69,7 +81,12 @@ namespace UntitledMagusProject.EntityClasses
 
 
 
-			spriteBatch.Draw(sprite, new Vector2(x, y), null, Color.White, 0, origin, 1, SpriteEffects.None, layerDepth);
+			spriteBatch.Draw(sprite, drawPosition, null, colorMask, 0, origin, 1, SpriteEffects.None, layerDepth);
+		}
+
+		public static void spriteDraw(SpriteBatch spriteBatch, Vector2 drawPosition, Texture2D sprite, String spriteAnchor, float layerDepth)
+		{
+			spriteDraw(spriteBatch, drawPosition, sprite, spriteAnchor, layerDepth, Color.White);
 		}
 
 

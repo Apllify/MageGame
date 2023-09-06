@@ -43,9 +43,9 @@ namespace UntitledMagusProject
 
 			ballTexture = Content.Load<Texture2D>("Placeholders/ball");
 
-			ballA = new SpritedEntity(50, 50, ballTexture, "C");
-			ballB = new SpritedEntity(100, 100, ballTexture, "C");
-			ballC = new SpritedEntity(150, 150, ballTexture, "C");
+			ballA = new SpritedEntity(new Vector2(50, 50), ballTexture, "C");
+			ballB = new SpritedEntity(new Vector2(100, 100), ballTexture, "C");
+			ballC = new SpritedEntity(new Vector2(150, 150), ballTexture, "C");
 
 
 		}
