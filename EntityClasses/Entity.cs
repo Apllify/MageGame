@@ -9,10 +9,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace UntitledMagusProject.EntityClasses
 {
-	public abstract class Entity
+	public class Entity
 	{
 
 		public String Tag { get; protected set; }
+
 
 		public virtual void Update(GameTime gameTime)
 		{

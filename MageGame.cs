@@ -5,7 +5,10 @@ using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 using System;
+
 using UntitledMagusProject.EntityClasses;
+using UntitledMagusProject.Implementations;
+using UntitledMagusProject.Implementations.Entities;
 
 namespace UntitledMagusProject
 {
@@ -15,11 +18,7 @@ namespace UntitledMagusProject
 		private SpriteBatch _spriteBatch;
 		private RenderTarget2D _renderTarget; //used for virtual resolution
 
-		private Texture2D ballTexture;
-
-		private SpritedEntity ballA;
-		private SpritedEntity ballB;
-		private SpritedEntity ballC;
+		private Wizard wizard;
 
 
         public MageGame()
@@ -39,13 +38,12 @@ namespace UntitledMagusProject
 
 		protected override void LoadContent()
 		{
+			//initialize sprite batch + our universal sprite loader
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
+			SpriteLoader.initializeSpriteLoader(Content);
 
-			ballTexture = Content.Load<Texture2D>("Placeholders/ball");
-
-			ballA = new SpritedEntity(new Vector2(50, 50), ballTexture, "C");
-			ballB = new SpritedEntity(new Vector2(100, 100), ballTexture, "C");
-			ballC = new SpritedEntity(new Vector2(150, 150), ballTexture, "C");
+			//now create the important entities
+			wizard = new Wizard(new Vector2(100, 100));
 
 
 		}
@@ -55,7 +53,8 @@ namespace UntitledMagusProject
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
 
-            // TODO: Add your update logic here
+			// TODO: Add your update logic here
+			wizard.Update(gameTime);
 		}
 
 		protected override void Draw(GameTime gameTime)
@@ -68,11 +67,8 @@ namespace UntitledMagusProject
 
 			_spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp);
 
-			ballA.Draw(_spriteBatch);
-			ballB.Draw(_spriteBatch);
-			ballC.Draw(_spriteBatch);
-
-			_spriteBatch.Draw(ballTexture, new Vector2(0, 0), null, Color.White, 0, new Vector2(0, 0), 1, SpriteEffects.None, 0.5f);
+			//DRAW LOGIC GOES HERE
+			wizard.Draw(_spriteBatch);
 
 			_spriteBatch.End();
 

@@ -25,7 +25,7 @@ namespace UntitledMagusProject.EntityClasses
 			Tag = "untagged-collision-entity";
 		}
 
-		public Rectangle getHitbox()
+		public virtual Rectangle getHitbox()
 		{
 			return curHitboxRectangle;
 		}

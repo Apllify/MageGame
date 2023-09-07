@@ -14,7 +14,7 @@ namespace UntitledMagusProject.EntityClasses
 	public class SpritedEntity : Entity
 	{
 
-		public Vector2 Position { get; set; }
+		protected Vector2 position;
 
 		protected Texture2D sprite;
 		protected String spriteAnchor; 
@@ -28,7 +28,7 @@ namespace UntitledMagusProject.EntityClasses
 		public SpritedEntity(Vector2 startingCoords, Texture2D _sprite, String _spriteAnchor, float _layerDepth)
 		{
 			//properties/fields that have argument values
-			Position = startingCoords;
+			position = startingCoords;
 
 			sprite = _sprite;
 			spriteAnchor = _spriteAnchor;
@@ -54,7 +54,7 @@ namespace UntitledMagusProject.EntityClasses
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
-			SpritedEntity.spriteDraw(spriteBatch, Position, sprite, spriteAnchor, LayerDepth);
+			SpritedEntity.spriteDraw(spriteBatch, position, sprite, spriteAnchor, LayerDepth);
 		}
 
 

@@ -8,15 +8,62 @@ using UntitledMagusProject.EntityClasses;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Reflection.Metadata;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended;
 
 namespace UntitledMagusProject.Implementations.Entities
 {
 	public class Wizard : CollisionEntity
 	{
+		protected Vector2 directionalInput;
+		protected Vector2 movementVector;
+		protected Vector2 zeroVector;
+
 		public Wizard(Vector2 position):
 			base(position, new Rectangle(), null, "C", GameConstants.activeDepth)
 		{
-			//TODO : find way to load a sprite here ?
+			directionalInput = new Vector2();
+			movementVector = new Vector2();
+			zeroVector = new Vector2(0, 0);
+
+			//TODO : replace this with actual wizard sprite
+			this.sprite = SpriteLoader.loadContent<Texture2D>("Placeholders/ball");
+		}
+
+		public override Rectangle getHitbox()
+		{
+			//TODO : generate hitbox here at runtime
+			return new Rectangle();
+		}
+
+		public override void Update(GameTime gameTime)
+		{
+			KeyboardState keyboard = Keyboard.GetState();
+
+			//reset the previous direciton
+			directionalInput = new Vector2(0, 0);
+
+			//determine the direction that the player is pressing
+			if (keyboard.IsKeyDown(Keys.D))
+				directionalInput.X = 1;
+			else if (keyboard.IsKeyDown(Keys.Q))
+				directionalInput.X = -1;
+
+			if (keyboard.IsKeyDown(Keys.Z))
+				directionalInput.Y = -1;
+			else if (keyboard.IsKeyDown(Keys.S))
+				directionalInput.Y = 1;
+
+			//normalize the vector to compute movement intensity
+			if (!directionalInput.Equals(zeroVector))
+			{
+				directionalInput.Normalize();
+				movementVector = (directionalInput * GameConstants.wizardSpeed) * (float)(gameTime.ElapsedGameTime.TotalSeconds);
+				position += movementVector;
+			}
+
+
 		}
 
 	}

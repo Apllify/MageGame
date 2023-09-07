@@ -8,6 +8,8 @@ namespace UntitledMagusProject
 {
 	public static class GameConstants
 	{
+		//Overall project constants
+
 		//virtual resolution
 		//1920/384 = 1080/216 = 5	
 		//384/32 = 12
@@ -18,6 +20,10 @@ namespace UntitledMagusProject
 		public const float activeDepth = 0.5f;
 		public const float foregroundDepth = 0.2f;
 		public const float backgroundDepth = 1f;
+
+
+		//Constants for balancing the wizards
+		public const float wizardSpeed = 120;
 
 	}
 }
