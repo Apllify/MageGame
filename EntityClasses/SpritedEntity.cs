@@ -50,11 +50,40 @@ namespace UntitledMagusProject.EntityClasses
 		public SpritedEntity(Vector2 startingCoords, Texture2D _sprite) :
 			this(startingCoords, _sprite, "C", GameConstants.activeDepth)
 		{ }
+
+		/// <summary>
+		/// Have to implement manually otherwise modifying it gets annoying
+		/// </summary>
+		/// <returns>The current position of the game object.</returns>
+		public Vector2 getPosition()
+		{
+			return position;
+		}
+
+		public void shiftPosition(float shiftX, float shiftY)
+		{
+			position.X += shiftX;
+			position.Y += shiftY;
+		}
+
+		public void shiftPosition(Vector2 shiftVector)
+		{
+			position += shiftVector;
+		}
 		
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
-			SpritedEntity.spriteDraw(spriteBatch, position, sprite, spriteAnchor, LayerDepth);
+			//check for custom colors
+			if (colorMask.Equals(Color.White))
+			{
+				SpritedEntity.spriteDraw(spriteBatch, position, sprite, spriteAnchor, LayerDepth);
+			}
+			else
+			{
+				SpritedEntity.spriteDraw(spriteBatch, position, sprite, spriteAnchor, LayerDepth, colorMask);
+
+			}
 		}
 
 

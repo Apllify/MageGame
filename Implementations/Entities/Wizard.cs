@@ -11,6 +11,7 @@ using System.Reflection.Metadata;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
+using System.Runtime.InteropServices;
 
 namespace UntitledMagusProject.Implementations.Entities
 {
@@ -20,21 +21,26 @@ namespace UntitledMagusProject.Implementations.Entities
 		protected Vector2 movementVector;
 		protected Vector2 zeroVector;
 
+		
+
 		public Wizard(Vector2 position):
-			base(position, new Rectangle(), null, "C", GameConstants.activeDepth)
+			base(position, null, "C", GameConstants.activeDepth)
 		{
 			directionalInput = new Vector2();
 			movementVector = new Vector2();
 			zeroVector = new Vector2(0, 0);
 
+			CollisionWeight = 2;
+
 			//TODO : replace this with actual wizard sprite
-			this.sprite = SpriteLoader.loadContent<Texture2D>("Placeholders/ball");
+			this.sprite = SpriteLoader.loadContent<Texture2D>("Placeholders/Box");
+			this.colorMask = Color.YellowGreen;
 		}
 
+		//TODO : potentially implement a custom hitbox override here?
 		public override Rectangle getHitbox()
 		{
-			//TODO : generate hitbox here at runtime
-			return new Rectangle();
+			return base.getHitbox();
 		}
 
 		public override void Update(GameTime gameTime)

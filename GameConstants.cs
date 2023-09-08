@@ -21,9 +21,11 @@ namespace UntitledMagusProject
 		public const float foregroundDepth = 0.2f;
 		public const float backgroundDepth = 1f;
 
+		public const int collisionPixelPrecision = 2;
+
 
 		//Constants for balancing the wizards
-		public const float wizardSpeed = 120;
+		public const float wizardSpeed = 200;
 
 	}
 }
